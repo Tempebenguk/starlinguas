@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/itemhome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:title="Home"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/itemuser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@android:drawable/ic_menu_my_calendar"
+        app:showAsAction="always"
+        android:title="User" />
+    <item
+        android:id="@+id/itemmenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="Menu"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/itemtransaksi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@android:drawable/ic_menu_send"
+        app:showAsAction="always"
+        android:title="Transaksi" />
+    <item
+        android:id="@+id/itemlayanan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:title="Layanan"
+        app:showAsAction="always" />
+</menu>
