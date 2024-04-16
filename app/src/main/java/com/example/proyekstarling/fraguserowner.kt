@@ -1,3 +1,4 @@
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -55,6 +56,11 @@ class fraguserowner : Fragment() {
                 arrGabungan.add(employeeData)
                 adapterLv.notifyDataSetChanged()
                 clearForm()
+
+                val intent = Intent(requireContext(), dashboardowner::class.java)
+                intent.putExtra("keyData", employeeData)
+                startActivity(intent)
+
                 Toast.makeText(requireContext(), "Berhasil menambahkan data admin", Toast.LENGTH_SHORT).show()
             }
         }

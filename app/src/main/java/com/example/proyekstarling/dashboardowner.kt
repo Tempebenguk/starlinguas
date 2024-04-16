@@ -1,5 +1,6 @@
 package com.example.proyekstarling
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -31,6 +32,8 @@ class dashboardowner : AppCompatActivity(), BottomNavigationView.OnNavigationIte
         fragmenu = fragmenuowner()
         fragtransaksi = fragtransaksiowner()
         fraglayanan = fraglayananowner()
+
+        val receivedData = intent?.getStringExtra("keyData")
     }
 
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
@@ -40,6 +43,7 @@ class dashboardowner : AppCompatActivity(), BottomNavigationView.OnNavigationIte
                 ft.replace(R.id.fragmentLayout, fraguser).commit()
                 binding.fragmentLayout.setBackgroundColor(Color.WHITE)
                 binding.fragmentLayout.visibility = View.VISIBLE
+
             }
             R.id.itemmenu-> {
                 ft = supportFragmentManager.beginTransaction()
