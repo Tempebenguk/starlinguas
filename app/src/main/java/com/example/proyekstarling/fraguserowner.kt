@@ -16,6 +16,7 @@ class fraguserowner : Fragment() {
     lateinit var binding: FraguserownerBinding
     lateinit var adapterLv: ArrayAdapter<String>
     lateinit var arrGabungan: ArrayList<String>
+    lateinit var arr: ArrayList<String>
     var selectedPosition: Int = -1
 
     override fun onCreateView(
