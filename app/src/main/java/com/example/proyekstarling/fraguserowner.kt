@@ -1,5 +1,5 @@
-import android.content.Intent
-import androidx.fragment.app.activityViewModels
+package com.example.proyekstarling
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,17 +9,15 @@ import android.widget.ListView
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.proyekstarling.R
-import com.example.proyekstarling.dashboardowner
 import com.example.proyekstarling.databinding.FraguserownerBinding
 
 class fraguserowner : Fragment() {
-    private val viewModel: UserViewModel by activityViewModels()
-    lateinit var thisParent: dashboardowner
+    lateinit var thisParent : dashboardowner
     lateinit var binding: FraguserownerBinding
     lateinit var adapterLv: ArrayAdapter<String>
     lateinit var arrGabungan: ArrayList<String>
     var selectedPosition: Int = -1
+    private var userDataListener: UserDataListener? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +31,6 @@ class fraguserowner : Fragment() {
         adapterLv = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, arrGabungan)
         binding.lvadmin.adapter = adapterLv
         binding.lvadmin.choiceMode = ListView.CHOICE_MODE_NONE
-
         binding.lvadmin.setOnItemLongClickListener { parent, view, position, id ->
             selectedPosition = position
             showPopupMenu(view)
@@ -59,9 +56,7 @@ class fraguserowner : Fragment() {
                 adapterLv.notifyDataSetChanged()
                 clearForm()
 
-//                val bundle = Bundle()
-//                bundle.putString("keyData", employeeData)
-//                thisParent.arguments = bundle
+                sendDataToDashboard(employeeData)
 
                 Toast.makeText(requireContext(), "Berhasil menambahkan data admin", Toast.LENGTH_SHORT).show()
             }
@@ -110,6 +105,9 @@ class fraguserowner : Fragment() {
             arrGabungan[position] = updatedData
             adapterLv.notifyDataSetChanged()
             clearForm()
+
+            sendDataToDashboard(updatedData)
+
             Toast.makeText(requireContext(), "Data admin diperbarui", Toast.LENGTH_SHORT).show()
         }
     }
@@ -125,5 +123,17 @@ class fraguserowner : Fragment() {
         binding.editTextNamaAdmin.setText("")
         binding.editTextHpAdmin.setText("")
         binding.editTextPasswordAdmin.setText("")
+    }
+
+    fun setUserDataListener(listener: UserDataListener) {
+        userDataListener = listener
+    }
+
+    private fun sendDataToDashboard(data: String) {
+        userDataListener?.onUserDataReceived(data)
+    }
+
+    interface UserDataListener {
+        fun onUserDataReceived(data: String)
     }
 }
