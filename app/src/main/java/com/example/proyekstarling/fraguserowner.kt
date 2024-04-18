@@ -57,9 +57,9 @@ class fraguserowner : Fragment() {
                 adapterLv.notifyDataSetChanged()
                 clearForm()
 
-//                val bundle = Bundle()
-//                bundle.putString("keyData", employeeData)
-//                thisParent.arguments = bundle
+                val bundle = Bundle()
+                bundle.putString("keyData", employeeData)
+                thisParent.arguments = bundle
 
                 Toast.makeText(requireContext(), "Berhasil menambahkan data admin", Toast.LENGTH_SHORT).show()
             }
