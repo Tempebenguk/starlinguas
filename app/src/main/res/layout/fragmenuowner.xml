@@ -58,6 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
+        android:backgroundTint="#DE843A"
         android:text="SIMPAN"
         app:cornerRadius="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,13 +73,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="16dp"
+        android:backgroundTint="#A94C00"
         android:orientation="horizontal"
         android:text="Gambar Produk"
         app:layout_constraintBottom_toTopOf="@id/buttonSimpan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autoCompleteKategori">
-    </Button>
+        app:layout_constraintTop_toBottomOf="@+id/autoCompleteKategori"></Button>
 
     <ListView
         android:id="@+id/lvadmin"
