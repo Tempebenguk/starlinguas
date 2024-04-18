@@ -57,9 +57,9 @@ class fraguserowner : Fragment() {
                 adapterLv.notifyDataSetChanged()
                 clearForm()
 
-                val intent = Intent(requireContext(), dashboardowner::class.java)
-                intent.putExtra("keyData", employeeData)
-                startActivity(intent)
+//                val bundle = Bundle()
+//                bundle.putString("keyData", employeeData)
+//                thisParent.arguments = bundle
 
                 Toast.makeText(requireContext(), "Berhasil menambahkan data admin", Toast.LENGTH_SHORT).show()
             }

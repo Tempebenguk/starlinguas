@@ -33,7 +33,10 @@ class dashboardowner : AppCompatActivity(), BottomNavigationView.OnNavigationIte
         fragtransaksi = fragtransaksiowner()
         fraglayanan = fraglayananowner()
 
-        val receivedData = intent?.getStringExtra("keyData")
+//        val receivedData = intent?.getStringExtra("keyData")
+//        if (receivedData != null) {
+//            // Lakukan sesuatu dengan data yang diterima
+//        }
     }
 
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
