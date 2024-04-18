@@ -1,42 +1,48 @@
 package com.example.proyekstarling
 
-import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.ListView
 import androidx.fragment.app.FragmentTransaction
 import com.example.proyekstarling.databinding.DashboardownerBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import fraglayananowner
-import fraguserowner
 
-
-class dashboardowner : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+class dashboardowner : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener, fraguserowner.UserDataListener {
     lateinit var binding: DashboardownerBinding
     lateinit var fraguser : fraguserowner
     lateinit var fragmenu : fragmenuowner
     lateinit var fragtransaksi : fragtransaksiowner
     lateinit var fraglayanan : fraglayananowner
     lateinit var ft : FragmentTransaction
-
+    private lateinit var listView: ListView
+    private lateinit var adapter: ArrayAdapter<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DashboardownerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.bnv1.setOnNavigationItemSelectedListener(this)
+        listView = findViewById(R.id.lv1)
+        adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1)
+        listView.adapter = adapter
+
         fraguser = fraguserowner()
+        fraguser.setUserDataListener(this)
+
+        binding.bnv1.setOnNavigationItemSelectedListener(this)
         fragmenu = fragmenuowner()
         fragtransaksi = fragtransaksiowner()
         fraglayanan = fraglayananowner()
+    }
 
-//        val receivedData = intent?.getStringExtra("keyData")
-//        if (receivedData != null) {
-//            // Lakukan sesuatu dengan data yang diterima
-//        }
+    override fun onUserDataReceived(data: String) {
+        adapter.add(data)
+        adapter.notifyDataSetChanged()
     }
 
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
