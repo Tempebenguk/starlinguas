@@ -1,4 +1,5 @@
 import android.content.Intent
+import androidx.fragment.app.activityViewModels
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import com.example.proyekstarling.dashboardowner
 import com.example.proyekstarling.databinding.FraguserownerBinding
 
 class fraguserowner : Fragment() {
+    private val viewModel: UserViewModel by activityViewModels()
     lateinit var thisParent: dashboardowner
     lateinit var binding: FraguserownerBinding
     lateinit var adapterLv: ArrayAdapter<String>
@@ -104,11 +106,11 @@ class fraguserowner : Fragment() {
             val hpAdmin = binding.editTextHpAdmin.text.toString()
             val passwordAdmin = binding.editTextPasswordAdmin.text.toString()
 
-            val employeeData = "Id_admin: $idAdmin\nNama: $namaAdmin\nNo HP: $hpAdmin\nPassword: $passwordAdmin"
-            arrGabungan.add(employeeData)
+            val updatedData = "Id_admin: $idAdmin\nNama: $namaAdmin\nNo HP: $hpAdmin\nPassword: $passwordAdmin"
+            arrGabungan[position] = updatedData
             adapterLv.notifyDataSetChanged()
             clearForm()
-            Toast.makeText(requireContext(), "Berhasil mengubah data admin", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Data admin diperbarui", Toast.LENGTH_SHORT).show()
         }
     }
 
