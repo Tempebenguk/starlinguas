@@ -51,26 +51,26 @@ class dashboardowner : AppCompatActivity(), BottomNavigationView.OnNavigationIte
             R.id.itemuser-> {
                 ft = supportFragmentManager.beginTransaction()
                 ft.replace(R.id.fragmentLayout, fraguser).commit()
-                binding.fragmentLayout.setBackgroundColor(Color.WHITE)
+                binding.fragmentLayout.setBackgroundColor(Color.argb(255,255,255,255))
                 binding.fragmentLayout.visibility = View.VISIBLE
 
             }
             R.id.itemmenu-> {
                 ft = supportFragmentManager.beginTransaction()
                 ft.replace(R.id.fragmentLayout, fragmenu).commit()
-                binding.fragmentLayout.setBackgroundColor(Color.WHITE)
+                binding.fragmentLayout.setBackgroundColor(Color.argb(255,255,255,255))
                 binding.fragmentLayout.visibility = View.VISIBLE
             }
             R.id.itemtransaksi-> {
                 ft = supportFragmentManager.beginTransaction()
                 ft.replace(R.id.fragmentLayout, fragtransaksi).commit()
-                binding.fragmentLayout.setBackgroundColor(Color.WHITE)
+                binding.fragmentLayout.setBackgroundColor(Color.argb(255,255,255,255))
                 binding.fragmentLayout.visibility = View.VISIBLE
             }
             R.id.itemlayanan-> {
                 ft = supportFragmentManager.beginTransaction()
                 ft.replace(R.id.fragmentLayout, fraglayanan).commit()
-                binding.fragmentLayout.setBackgroundColor(Color.WHITE)
+                binding.fragmentLayout.setBackgroundColor(Color.argb(255,255,255,255))
                 binding.fragmentLayout.visibility = View.VISIBLE
             }
             R.id.itemhome -> binding.fragmentLayout.visibility = View.GONE

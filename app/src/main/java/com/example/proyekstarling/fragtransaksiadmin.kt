@@ -69,10 +69,16 @@ class fragtransaksiadmin : Fragment(), View.OnClickListener, TimePickerDialog.On
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, selectedItems)
         binding.lvtr.adapter = adapter
 
+        // Set ArrayAdapter to Spinner
+        adapterSpin = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, pembayaran)
+        adapterSpin.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.sp1.adapter = adapterSpin
+
         binding.tran.setOnClickListener {
             // Clear the previous selected items
             selectedItems.clear()
 
+            // Add selected items from CheckBox
             if (binding.box1.isChecked) selectedItems.add("Pop Mie")
             if (binding.box2.isChecked) selectedItems.add("Mie Goreng")
             if (binding.box3.isChecked) selectedItems.add("Snack")
@@ -80,23 +86,17 @@ class fragtransaksiadmin : Fragment(), View.OnClickListener, TimePickerDialog.On
             if (binding.box5.isChecked) selectedItems.add("Teh")
             if (binding.box6.isChecked) selectedItems.add("Kopi")
 
-            // Notify the adapter that the data hvas changed
-            adapter.notifyDataSetChanged()
-
-            adapterSpin = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, pembayaran)
-            adapterSpin.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            binding.sp1.adapter = adapterSpin
-
-            binding.tran.setOnClickListener {
-
-                selectedItems.clear()
-                val selectedPayment = binding.sp1.selectedItem.toString()
-                if (selectedPayment.isNotEmpty()) {
-                    selectedItems.add(selectedPayment)
-                }
-
-                adapter.notifyDataSetChanged()
+            // Add selected item from Spinner
+            val selectedPayment = binding.sp1.selectedItem.toString()
+            if (selectedPayment.isNotEmpty()) {
+                selectedItems.add("Metode Pembayaran: $selectedPayment")
             }
+
+            // Add selected date and time
+            selectedItems.add("Tanggal : $hari-$bulan-$tahun, $jam:$menit")
+
+            // Notify the adapter that the data has changed
+            adapter.notifyDataSetChanged()
         }
     }
 
@@ -126,13 +126,13 @@ class fragtransaksiadmin : Fragment(), View.OnClickListener, TimePickerDialog.On
     }
 
     override fun onTimeSet(view: android.widget.TimePicker?, hourOfDay: Int, minute: Int) {
-        binding.jam.text = "Hari ini, tanggal $hari-$bulan-$tahun, jam $hourOfDay:$minute"
+        // Update selected time
         jam = hourOfDay
         menit = minute
     }
 
     override fun onDateSet(view: android.widget.DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-        binding.tgl.text = "Hari ini, tanggal $dayOfMonth-${month + 1}-$year, jam $jam:$menit"
+        // Update selected date
         tahun = year
         bulan = month + 1
         hari = dayOfMonth

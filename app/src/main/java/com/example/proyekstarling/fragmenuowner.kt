@@ -29,8 +29,10 @@ class fragmenuowner : Fragment () {
         val view = binding.root
         thisParent = activity as dashboardowner
 
-        val Kategori = arrayOf("Makanan", "Minuman")
+        // Inisialisasi arrGabungan di sini
         arrGabungan = ArrayList()
+
+        val Kategori = arrayOf("Makanan", "Minuman")
         adapterLv = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, arrGabungan)
         binding.lvadmin.adapter = adapterLv
         binding.lvadmin.choiceMode = ListView.CHOICE_MODE_NONE
