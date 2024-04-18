@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 import com.example.proyekstarling.databinding.FraguserownerBinding
 
 class fraguserowner : Fragment() {
-    lateinit var thisParent: dashboardowner
+    lateinit var thisParent : dashboardowner
     lateinit var binding: FraguserownerBinding
     lateinit var adapterLv: ArrayAdapter<String>
     lateinit var arrGabungan: ArrayList<String>
@@ -31,7 +31,6 @@ class fraguserowner : Fragment() {
         adapterLv = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, arrGabungan)
         binding.lvadmin.adapter = adapterLv
         binding.lvadmin.choiceMode = ListView.CHOICE_MODE_NONE
-
         binding.lvadmin.setOnItemLongClickListener { parent, view, position, id ->
             selectedPosition = position
             showPopupMenu(view)
