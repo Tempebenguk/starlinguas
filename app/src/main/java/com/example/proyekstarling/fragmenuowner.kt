@@ -29,9 +29,7 @@ class fragmenuowner : Fragment () {
         val view = binding.root
         thisParent = activity as dashboardowner
 
-        // Inisialisasi arrGabungan di sini
         arrGabungan = ArrayList()
-
         val Kategori = arrayOf("Makanan", "Minuman")
         adapterLv = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, arrGabungan)
         binding.lvadmin.adapter = adapterLv
@@ -44,13 +42,14 @@ class fragmenuowner : Fragment () {
         binding.buttonSimpan.setOnClickListener {
             val idMenu = binding.editTextIdMenu.text.toString()
             val namaMenu = binding.editTextNamaMenu.text.toString()
+            val hargaMenu = binding.editTextHargaMenu.text.toString()
             val stok = binding.editTextStok.text.toString()
             val kategori = binding.autoCompleteKategori.text.toString()
 
             if (idMenu in arrGabungan.map { it.split("\n")[0].split(": ")[1] }) {
                 Toast.makeText(requireContext(), "ID sudah ada", Toast.LENGTH_SHORT).show()
             } else {
-                val menuData = "Id_Menu: $idMenu\nNama Menu: $namaMenu\nStok: $stok\nKategori: $kategori"
+                val menuData = "Id_Menu: $idMenu\nNama Menu: $namaMenu\nHarga menu: $hargaMenu\nStok: $stok\nKategori: $kategori"
                 arrGabungan.add(menuData)
                 adapterLv.notifyDataSetChanged()
                 clearForm()
@@ -92,7 +91,33 @@ class fragmenuowner : Fragment () {
     }
 
     private fun editItem(position: Int) {
-        // Implement edit item logic here
+        val selectedItem = arrGabungan[position].split("\n")
+        val idMenu = selectedItem[0].split(": ")[1]
+        val namaMenu = selectedItem[1].split(": ")[1]
+        val hargaMenu = selectedItem[2].split(": ")[1]
+        val stok = selectedItem[3].split(": ")[1]
+        val kategori = selectedItem[4].split(": ")[1]
+
+        binding.editTextIdMenu.setText(idMenu)
+        binding.editTextNamaMenu.setText(namaMenu)
+        binding.editTextHargaMenu.setText(hargaMenu)
+        binding.editTextStok.setText(stok)
+        binding.autoCompleteKategori.setText(kategori)
+
+        binding.buttonSimpan.setOnClickListener {
+            val updatedIdMenu = binding.editTextIdMenu.text.toString()
+            val updatedNamaMenu = binding.editTextNamaMenu.text.toString()
+            val updatedHargaMenu = binding.editTextHargaMenu.text.toString()
+            val updatedStok = binding.editTextStok.text.toString()
+            val updatedKategori = binding.autoCompleteKategori.text.toString()
+
+            val updatedData = "Id_Menu: $updatedIdMenu\nNama Menu: $updatedNamaMenu\nHarga menu: $updatedHargaMenu\nStok: $updatedStok\nKategori: $updatedKategori"
+            arrGabungan[position] = updatedData
+            adapterLv.notifyDataSetChanged()
+            clearForm()
+
+            Toast.makeText(requireContext(), "Data menu diperbarui", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun deleteItem(position: Int) {
@@ -104,6 +129,7 @@ class fragmenuowner : Fragment () {
     private fun clearForm() {
         binding.editTextIdMenu.setText("")
         binding.editTextNamaMenu.setText("")
+        binding.editTextHargaMenu.setText("")
         binding.editTextStok.setText("")
         binding.autoCompleteKategori.setText("")
     }
