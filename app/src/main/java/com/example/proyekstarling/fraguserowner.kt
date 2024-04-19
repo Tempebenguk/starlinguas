@@ -106,8 +106,6 @@ class fraguserowner : Fragment() {
             adapterLv.notifyDataSetChanged()
             clearForm()
 
-            sendDataToDashboard(updatedData)
-
             Toast.makeText(requireContext(), "Data admin diperbarui", Toast.LENGTH_SHORT).show()
         }
     }
