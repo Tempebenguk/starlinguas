@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".dashboardadmin">
 
-    <ListView
-        android:layout_width="358dp"
-        android:layout_height="406dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="22dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtrans" />
-
     <TextView
         android:id="@+id/txtrans"
         android:layout_width="wrap_content"
@@ -40,6 +30,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/starling" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="360dp"
+        android:layout_height="430dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="26dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img1"
+        app:srcCompat="@drawable/admin" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="332dp"
+        android:layout_height="109dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="540dp"
+        android:layout_marginEnd="40dp"
+        android:text="Ups terjadi kesalahan :("
+        android:textAlignment="center"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txT1"
