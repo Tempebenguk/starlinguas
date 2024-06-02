@@ -6,96 +6,59 @@
     android:layout_height="match_parent"
     tools:context=".dashboardadmin">
 
-    <TextView
-        android:id="@+id/txtrans"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="153dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="154dp"
-        android:text="DATA TRANSAKSI"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txT1" />
-
     <ImageView
         android:id="@+id/img1"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="141dp"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="87dp"
+        android:layout_marginEnd="6dp"
+        android:tint="#BFFFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView12"
+        app:srcCompat="@drawable/starling" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="420dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ppanjang"
+        tools:layout_editor_absoluteX="-5dp" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.042"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/starling" />
 
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="360dp"
-        android:layout_height="430dp"
-        android:layout_marginStart="25dp"
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="81dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="17dp"
+        android:fontFamily="@font/baloo_bhai"
+        android:text="Admin"
+        android:textColor="#ffff"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView13"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="409dp"
+        android:layout_height="558dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="26dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img1"
-        app:srcCompat="@drawable/admin" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="332dp"
-        android:layout_height="109dp"
-        android:layout_marginStart="39dp"
-        android:layout_marginTop="540dp"
-        android:layout_marginEnd="40dp"
-        android:text="Ups terjadi kesalahan :("
-        android:textAlignment="center"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txT1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="57dp"
-        android:layout_marginTop="160dp"
-        android:layout_marginEnd="58dp"
-        android:text="SELAMAT DATANG ADMIN"
-        android:textSize="24sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bnv1"
-        android:layout_width="411dp"
-        android:layout_height="70dp"
-        android:background="#3600B1"
-        app:itemBackground="@color/design_default_color_primary_dark"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        app:labelVisibilityMode="selected"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/layoutadmin" />
-
-    <FrameLayout
-        android:id="@+id/fragmentLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></FrameLayout>
+        app:layout_constraintTop_toBottomOf="@+id/imageView12" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

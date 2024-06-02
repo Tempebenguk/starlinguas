@@ -6,71 +6,52 @@
     android:layout_height="match_parent"
     tools:context=".dashboardowner">
 
-    <ImageView
-        android:id="@+id/imgstar"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginStart="141dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="141dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/starling" />
-
-    <TextView
-        android:id="@+id/txT2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="153dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="154dp"
-        android:text="DATA USER"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tx1" />
-
-    <TextView
-        android:id="@+id/tx1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="57dp"
-        android:layout_marginTop="160dp"
-        android:layout_marginEnd="58dp"
-        android:text="SELAMAT DATANG OWNER"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ListView
-        android:id="@+id/lv1"
-        android:layout_width="358dp"
-        android:layout_height="406dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="22dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txT2" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnv1"
-        android:layout_width="367dp"
+        android:layout_width="411dp"
         android:layout_height="72dp"
-        android:background="#3600B1"
-        app:itemBackground="@color/design_default_color_primary_dark"
+        android:background="#BA7237"
+        app:itemBackground="@android:color/transparent"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         app:labelVisibilityMode="selected"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/layoutowner">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <ImageView
+        android:id="@+id/img1"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="114dp"
+        android:layout_marginEnd="6dp"
+        android:tint="#BFFFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:srcCompat="@drawable/starling" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="182dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="114dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="115dp"
+        android:fontFamily="@font/baloo_bhai"
+        android:gravity="center"
+        android:text="Dashboard"
+        android:textColor="#BA7237"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
         android:id="@+id/fragmentLayout"

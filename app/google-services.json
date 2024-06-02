@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "816572852011",
+    "firebase_url": "https://starling-79d8b-default-rtdb.firebaseio.com",
+    "project_id": "starling-79d8b",
+    "storage_bucket": "starling-79d8b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:816572852011:android:f52b1514378aa4fad4c76e",
+        "android_client_info": {
+          "package_name": "com.example.proyekstarling"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxSqaHw1HdwLQjL_RN7z-YJgMQEEyuzy0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

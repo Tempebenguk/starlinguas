@@ -12,39 +12,26 @@ import com.example.proyekstarling.databinding.DashboardownerBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import fraglayananowner
 
-class dashboardowner : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener, fraguserowner.UserDataListener {
+class dashboardowner : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
     lateinit var binding: DashboardownerBinding
     lateinit var fraguser : fraguserowner
     lateinit var fragmenu : fragmenuowner
     lateinit var fragtransaksi : fragtransaksiowner
     lateinit var fraglayanan : fraglayananowner
     lateinit var ft : FragmentTransaction
-    private lateinit var listView: ListView
-    private lateinit var adapter: ArrayAdapter<String>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DashboardownerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        listView = findViewById(R.id.lv1)
-        adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1)
-        listView.adapter = adapter
-
         fraguser = fraguserowner()
-        fraguser.setUserDataListener(this)
-
         binding.bnv1.setOnNavigationItemSelectedListener(this)
         fragmenu = fragmenuowner()
         fragtransaksi = fragtransaksiowner()
         fraglayanan = fraglayananowner()
     }
-
-    override fun onUserDataReceived(data: String) {
-        adapter.add(data)
-        adapter.notifyDataSetChanged()
-    }
-
 
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
         when(p0.itemId){
@@ -67,7 +54,7 @@ class dashboardowner : AppCompatActivity(), BottomNavigationView.OnNavigationIte
                 binding.fragmentLayout.setBackgroundColor(Color.argb(255,255,255,255))
                 binding.fragmentLayout.visibility = View.VISIBLE
             }
-            R.id.itemlayanan-> {
+            R.id.itemrekap-> {
                 ft = supportFragmentManager.beginTransaction()
                 ft.replace(R.id.fragmentLayout, fraglayanan).commit()
                 binding.fragmentLayout.setBackgroundColor(Color.argb(255,255,255,255))
