@@ -92,6 +92,7 @@
 
     <EditText
         android:id="@+id/editIdAdmin"
+        android:padding="8dp"
         android:layout_width="379dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
@@ -105,6 +106,7 @@
 
     <EditText
         android:id="@+id/editNamaAdmin"
+        android:padding="8dp"
         android:layout_width="379dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
@@ -118,6 +120,7 @@
 
     <EditText
         android:id="@+id/editAlamatAdmin"
+        android:padding="8dp"
         android:layout_width="379dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
@@ -130,6 +133,7 @@
 
     <EditText
         android:id="@+id/editTeleponAdmin"
+        android:padding="8dp"
         android:layout_width="379dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
@@ -142,6 +146,7 @@
 
     <EditText
         android:id="@+id/editPasswordAdmin"
+        android:padding="8dp"
         android:layout_width="150dp"
         android:layout_height="40dp"
         android:layout_marginTop="9dp"

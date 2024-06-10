@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:foregroundTint="#5F2121"
     tools:context=".dashboardowner">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnv1"
-        android:layout_width="411dp"
+        android:layout_width="match_parent"
         android:layout_height="72dp"
         android:background="#BA7237"
         app:itemBackground="@android:color/transparent"
@@ -17,11 +18,8 @@
         app:labelVisibilityMode="selected"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/layoutowner">
-
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+        app:menu="@menu/layoutowner" />
 
     <ImageView
         android:id="@+id/img1"
@@ -36,13 +34,43 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         app:srcCompat="@drawable/starling" />
 
+    <ImageView
+        android:id="@+id/imageadmin"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="67dp"
+        android:backgroundTint="#FFFFFF"
+        android:foregroundTint="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:srcCompat="@drawable/user" />
+
+    <ImageView
+        android:id="@+id/imagemenu"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="67dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageadmin"
+        app:srcCompat="@drawable/menu" />
+
+    <ImageView
+        android:id="@+id/imagetransaksi"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="67dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagemenu"
+        app:srcCompat="@drawable/transaksi2" />
+
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="182dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="114dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="115dp"
         android:fontFamily="@font/baloo_bhai"
         android:gravity="center"
         android:text="Dashboard"
@@ -53,14 +81,54 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- TextViews untuk menampilkan jumlah total data user, data menu, dan data transaksi -->
+
+    <TextView
+        android:id="@+id/userCountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/baloo_bhai"
+        android:text="Dashboard"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageadmin"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/menuCountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="144dp"
+        android:fontFamily="@font/baloo_bhai"
+        android:text="Dashboard"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imagemenu"
+        app:layout_constraintTop_toBottomOf="@+id/userCountTextView" />
+
+    <TextView
+        android:id="@+id/transactionCountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:fontFamily="@font/baloo_bhai"
+        android:text="Dashboard"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imagetransaksi"
+        app:layout_constraintTop_toBottomOf="@+id/menuCountTextView" />
+
     <FrameLayout
         android:id="@+id/fragmentLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></FrameLayout>
-
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

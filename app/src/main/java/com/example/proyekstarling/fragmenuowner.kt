@@ -55,11 +55,17 @@ class fragmenuowner : Fragment() {
 
     private fun tambahkanMenuKeView(menu: menu) {
         val menuView = LayoutInflater.from(context).inflate(R.layout.menu_item, binding.menuListContainer, false)
+        val menuIdTextView = menuView.findViewById<TextView>(R.id.menuIdTextView)
         val menuNameTextView = menuView.findViewById<TextView>(R.id.menuNameTextView)
+        val menuPriceTextView = menuView.findViewById<TextView>(R.id.menuPriceTextView)
+        val menuStockTextView = menuView.findViewById<TextView>(R.id.menuStockTextView)
         val editButton = menuView.findViewById<Button>(R.id.editButton)
         val deleteButton = menuView.findViewById<Button>(R.id.deleteButton)
 
+        menuIdTextView.text = menu.id
         menuNameTextView.text = menu.nama_menu
+        menuPriceTextView.text = "Harga: ${menu.harga}"
+        menuStockTextView.text = "Stok: ${menu.stock}"
 
         editButton.setOnClickListener {
             val bundle = Bundle()

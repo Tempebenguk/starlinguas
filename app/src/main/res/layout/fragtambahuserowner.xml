@@ -97,6 +97,7 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/edittext_border"
         app:layout_constraintEnd_toEndOf="parent"
+        android:padding="8dp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -107,6 +108,7 @@
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:padding="8dp"
         android:background="@drawable/edittext_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -123,6 +125,7 @@
         android:background="@drawable/edittext_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
+        android:padding="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Alamat" />
 
@@ -134,6 +137,7 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/edittext_border"
         app:layout_constraintEnd_toEndOf="parent"
+        android:padding="8dp"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Telepon" />
@@ -143,6 +147,7 @@
         android:layout_width="150dp"
         android:layout_height="40dp"
         android:layout_marginTop="9dp"
+        android:padding="8dp"
         android:layout_marginEnd="17dp"
         android:background="@drawable/edittext_border"
         app:layout_constraintEnd_toEndOf="parent"

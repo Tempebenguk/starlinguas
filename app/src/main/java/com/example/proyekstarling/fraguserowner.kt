@@ -54,10 +54,10 @@ class fraguserowner : Fragment() {
     }
 
     private fun tambahkanAdminKeView(admin: admin) {
-        val adminView = LayoutInflater.from(context).inflate(R.layout.menu_item, binding.adminListContainer, false)
-        val adminNameTextView = adminView.findViewById<TextView>(R.id.menuNameTextView)
-        val editButton = adminView.findViewById<Button>(R.id.editButton)
-        val deleteButton = adminView.findViewById<Button>(R.id.deleteButton)
+        val adminView = LayoutInflater.from(context).inflate(R.layout.user_item, binding.adminListContainer, false)
+        val adminNameTextView = adminView.findViewById<TextView>(R.id.AdminNameTextView)
+        val editButton = adminView.findViewById<Button>(R.id.editButtonadm)
+        val deleteButton = adminView.findViewById<Button>(R.id.deleteButtonadm)
 
         adminNameTextView.text = admin.nama
 

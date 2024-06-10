@@ -10,6 +10,7 @@ import android.widget.ListView
 import androidx.fragment.app.FragmentTransaction
 import com.example.proyekstarling.databinding.DashboardownerBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.database.*
 import fraglayananowner
 
 class dashboardowner : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
@@ -19,7 +20,7 @@ class dashboardowner : AppCompatActivity(), BottomNavigationView.OnNavigationIte
     lateinit var fragtransaksi : fragtransaksiowner
     lateinit var fraglayanan : fraglayananowner
     lateinit var ft : FragmentTransaction
-
+    lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +32,43 @@ class dashboardowner : AppCompatActivity(), BottomNavigationView.OnNavigationIte
         fragmenu = fragmenuowner()
         fragtransaksi = fragtransaksiowner()
         fraglayanan = fraglayananowner()
+        database = FirebaseDatabase.getInstance().reference
+
+        // Menampilkan jumlah total data user
+        database.child("Admin").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val userCount = snapshot.childrenCount
+                binding.userCountTextView.text = "Total Data Admin : $userCount"
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle error
+            }
+        })
+
+        // Menampilkan jumlah total data menu
+        database.child("menu").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val menuCount = snapshot.childrenCount
+                binding.menuCountTextView.text = "Total Data Menu : $menuCount"
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle error
+            }
+        })
+
+        // Menampilkan jumlah total data transaksi
+        database.child("transaksi").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val transactionCount = snapshot.childrenCount
+                binding.transactionCountTextView.text = "Total Data Transaksi : $transactionCount"
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle error
+            }
+        })
     }
 
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
@@ -40,7 +78,6 @@ class dashboardowner : AppCompatActivity(), BottomNavigationView.OnNavigationIte
                 ft.replace(R.id.fragmentLayout, fraguser).commit()
                 binding.fragmentLayout.setBackgroundColor(Color.argb(255,255,255,255))
                 binding.fragmentLayout.visibility = View.VISIBLE
-
             }
             R.id.itemmenu-> {
                 ft = supportFragmentManager.beginTransaction()

@@ -5,136 +5,88 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
 import com.example.proyekstarling.databinding.FragtransaksiadminBinding
-import java.util.Calendar
-import android.widget.ArrayAdapter
+import com.google.firebase.database.FirebaseDatabase
 
-class fragtransaksiadmin : Fragment(), View.OnClickListener, TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+class fragtransaksiadmin : Fragment() {
 
-    lateinit var thisParent: dashboardadmin
-    lateinit var binding: FragtransaksiadminBinding
-    lateinit var adapterSpin : ArrayAdapter<String>
-    val pembayaran = arrayOf("Gopay", "Dana", "OVO", "Shopeepay", "Paypal")
+    private lateinit var binding: FragtransaksiadminBinding
+    private var transaksiId: String? = null
 
-    var tahun = 0
-    var bulan = 0
-    var hari = 0
-    var jam = 0
-    var menit = 0
+    companion object {
+        private const val ARG_TRANSACTION_ID = "transactionId"
+        private const val ARG_TRANSACTION = "transaction"
 
-    // ArrayList to store selected items from CheckBox
-    var selectedItems: ArrayList<String> = ArrayList()
-
-    override fun onClick(v: View?) {
-        when (v?.id) {
-            R.id.jam -> showDialog(100)
-            R.id.tgl -> showDialog(200)
+        fun newInstance(transactionId: String, transaction: transaksi): fragtransaksiadmin {
+            val fragment = fragtransaksiadmin()
+            val args = Bundle()
+            args.putString(ARG_TRANSACTION_ID, transactionId)
+            args.putSerializable(ARG_TRANSACTION, transaction)
+            fragment.arguments = args
+            return fragment
         }
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragtransaksiadminBinding.inflate(inflater, container, false)
-        val view = binding.root
-        thisParent = activity as dashboardadmin
-
-        // get instance of Calendar class
-        val cal: Calendar = Calendar.getInstance()
-
-        bulan = cal.get(Calendar.MONTH) + 1
-        hari = cal.get(Calendar.DAY_OF_MONTH)
-        tahun = cal.get(Calendar.YEAR)
-        jam = cal.get(Calendar.HOUR_OF_DAY)
-        menit = cal.get(Calendar.MINUTE)
-
-        binding.jam.setOnClickListener(this)
-        binding.tgl.setOnClickListener(this)
-        binding.tran.setOnClickListener(this)
-
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Array of checkbox items
-        val items = arrayOf("Pop Mie", "Mie Goreng", "Snack", "Aqua", "Teh", "Kopi")
+        transaksiId = arguments?.getString(ARG_TRANSACTION_ID)
+        val transaction = arguments?.getSerializable(ARG_TRANSACTION) as? transaksi
+        binding.ID.text = transaksiId
 
-        // Set ArrayAdapter to ListView
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, selectedItems)
-        binding.lvtr.adapter = adapter
-
-        // Set ArrayAdapter to Spinner
-        adapterSpin = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, pembayaran)
-        adapterSpin.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.sp1.adapter = adapterSpin
-
-        binding.tran.setOnClickListener {
-            // Clear the previous selected items
-            selectedItems.clear()
-
-            // Add selected items from CheckBox
-            if (binding.box1.isChecked) selectedItems.add("Pop Mie")
-            if (binding.box2.isChecked) selectedItems.add("Mie Goreng")
-            if (binding.box3.isChecked) selectedItems.add("Snack")
-            if (binding.box4.isChecked) selectedItems.add("Aqua")
-            if (binding.box5.isChecked) selectedItems.add("Teh")
-            if (binding.box6.isChecked) selectedItems.add("Kopi")
-
-            // Add selected item from Spinner
-            val selectedPayment = binding.sp1.selectedItem.toString()
-            if (selectedPayment.isNotEmpty()) {
-                selectedItems.add("Metode Pembayaran: $selectedPayment")
-            }
-
-            // Add selected date and time
-            selectedItems.add("Tanggal : $hari-$bulan-$tahun, $jam:$menit")
-
-            // Notify the adapter that the data has changed
-            adapter.notifyDataSetChanged()
+        transaction?.let {
+            tampilkanDetailTransaksi(transaksiId ?: "", it)
+            setupButtonVisibility(it.status)
         }
     }
 
-    private fun showDialog(id: Int) {
-        when (id) {
-            100 -> {
-                val timePickerDialog = TimePickerDialog(
-                    requireContext(),
-                    this,
-                    jam,
-                    menit,
-                    true
-                )
-                timePickerDialog.show()
+    private fun tampilkanDetailTransaksi(transactionId: String, transaction: transaksi) {
+        val detailText = StringBuilder("Halo Admin,\n\nTerdapat pesanan untuk transaksi id $transactionId. Berikut detail pesanan:\n\n")
+
+        for ((_, detail) in transaction.detail_trx) {
+            detailText.append("${detail.nama_menu} (${detail.qty} x Rp. ${detail.harga}) = Rp. ${detail.qty * detail.harga}\n")
+        }
+
+        detailText.append("\nTotal Pembayaran untuk transaksi $transactionId:\nRp. ${transaction.total_bayar}\n")
+        detailText.append("Nominal yang dibayarkan: Rp. ${transaction.nominal}\n")
+        detailText.append("Kembalian: Rp. ${transaction.kembalian}\n")
+        detailText.append("Catatan : ${transaction.catatan}\n\n")
+
+        if (transaction.status == 2) {
+            detailText.append("Transaksi ini sudah dikonfirmasi.")
+        } else {
+            detailText.append("Silahkan tekan Ya untuk konfirmasi pemesanan.")
+        }
+
+        binding.textViewTransactionDetails.text = detailText.toString()
+    }
+
+    private fun setupButtonVisibility(status: Int) {
+        if (status == 1) {
+            binding.confirmButton.visibility = View.VISIBLE
+            binding.confirmButton.setOnClickListener {
+                updateStatusTransaksi(transaksiId ?: "")
             }
-            200 -> {
-                val datePickerDialog = DatePickerDialog(
-                    requireContext(),
-                    this,
-                    tahun,
-                    bulan - 1,
-                    hari
-                )
-                datePickerDialog.show()
-            }
+        } else {
+            binding.confirmButton.visibility = View.GONE
         }
     }
 
-    override fun onTimeSet(view: android.widget.TimePicker?, hourOfDay: Int, minute: Int) {
-        // Update selected time
-        jam = hourOfDay
-        menit = minute
-    }
-
-    override fun onDateSet(view: android.widget.DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-        // Update selected date
-        tahun = year
-        bulan = month + 1
-        hari = dayOfMonth
+    private fun updateStatusTransaksi(transactionId: String) {
+        val databaseReference = FirebaseDatabase.getInstance().reference.child("transaksi").child(transactionId)
+        databaseReference.child("status").setValue(2)
+            .addOnSuccessListener {
+                requireActivity().supportFragmentManager.popBackStack()
+            }
+            .addOnFailureListener {
+            }
     }
 }
