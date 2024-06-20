@@ -29,6 +29,16 @@ class fraguserowner : Fragment() {
                 .addToBackStack(null)
                 .commit()
         }
+
+        binding.btnCari.setOnClickListener {
+            val searchName = binding.cariAdmin.text.toString()
+            if (searchName.isNotEmpty()) {
+                cariAdminBerdasarkanNama(searchName)
+            } else {
+                ambilDataAdmin()
+            }
+        }
+
         ambilDataAdmin()
         return view
     }
@@ -79,5 +89,25 @@ class fraguserowner : Fragment() {
             }
         }
         binding.adminListContainer.addView(adminView)
+    }
+
+    private fun cariAdminBerdasarkanNama(nama: String) {
+        database.orderByChild("nama").equalTo(nama).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                binding.adminListContainer.removeAllViews()
+                for (adminSnapshot in snapshot.children) {
+                    val adminId = adminSnapshot.key
+                    val admin = adminSnapshot.getValue(admin::class.java)
+                    if (admin != null && adminId != null) {
+                        admin.id = adminId
+                        tambahkanAdminKeView(admin)
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(context, "Gagal mencari admin", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }
