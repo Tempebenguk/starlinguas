@@ -49,19 +49,19 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
         android:gravity="center_vertical"
-        android:layout_gravity="center_vertical">
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/editButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:backgroundTint="#E7C61A"
             android:text="Edit"
             android:textSize="14sp"
-            app:cornerRadius="4sp"
-            android:layout_marginEnd="8dp"/>
+            app:cornerRadius="4sp" />
 
         <Button
             android:id="@+id/deleteButton"
