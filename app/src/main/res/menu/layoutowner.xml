@@ -24,6 +24,13 @@
         app:showAsAction="always"
         android:title="Menu" />
     <item
+        android:id="@+id/itemkategori"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/layanan2"
+        app:showAsAction="always"
+        android:title="Kategori" />
+    <item
         android:id="@+id/itemrekap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

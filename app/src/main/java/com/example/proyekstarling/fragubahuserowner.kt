@@ -33,7 +33,7 @@ class fragubahuserowner : Fragment() {
             loadAdminData(adminId!!)
         }
 
-        binding.btnUbahUser.setOnClickListener {
+        binding.btnubahadmin.setOnClickListener {
             updateAdmin()
         }
 

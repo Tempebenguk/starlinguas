@@ -19,6 +19,7 @@ class dashboardowner : AppCompatActivity(), BottomNavigationView.OnNavigationIte
     lateinit var fragmenu : fragmenuowner
     lateinit var fragtransaksi : fragtransaksiowner
     lateinit var fraglayanan : fraglayananowner
+    lateinit var fragkategori : fragkategoriowner
     lateinit var ft : FragmentTransaction
     lateinit var database: DatabaseReference
 
@@ -94,6 +95,12 @@ class dashboardowner : AppCompatActivity(), BottomNavigationView.OnNavigationIte
             R.id.itemrekap-> {
                 ft = supportFragmentManager.beginTransaction()
                 ft.replace(R.id.fragmentLayout, fraglayanan).commit()
+                binding.fragmentLayout.setBackgroundColor(Color.argb(255,255,255,255))
+                binding.fragmentLayout.visibility = View.VISIBLE
+            }
+            R.id.itemkategori-> {
+                ft = supportFragmentManager.beginTransaction()
+                ft.replace(R.id.fragmentLayout, fragkategori).commit()
                 binding.fragmentLayout.setBackgroundColor(Color.argb(255,255,255,255))
                 binding.fragmentLayout.visibility = View.VISIBLE
             }

@@ -24,7 +24,7 @@ class fragtambahuserowner : Fragment() {
         val view = binding.root
         database = FirebaseDatabase.getInstance().getReference("Admin")
 
-        binding.btnUbahUser.setOnClickListener {
+        binding.btntambahadmin.setOnClickListener {
             tambahAdmin()
         }
         return view
