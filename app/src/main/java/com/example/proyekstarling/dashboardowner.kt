@@ -19,7 +19,6 @@ class dashboardowner : AppCompatActivity(), BottomNavigationView.OnNavigationIte
     lateinit var fragmenu : fragmenuowner
     lateinit var fragtransaksi : fragtransaksiowner
     lateinit var fraglayanan : fraglayananowner
-    lateinit var fragaboutowner: fragaboutowner
     lateinit var ft : FragmentTransaction
     lateinit var database: DatabaseReference
 
@@ -33,7 +32,6 @@ class dashboardowner : AppCompatActivity(), BottomNavigationView.OnNavigationIte
         fragmenu = fragmenuowner()
         fragtransaksi = fragtransaksiowner()
         fraglayanan = fraglayananowner()
-        fragaboutowner = fragaboutowner()
         database = FirebaseDatabase.getInstance().reference
 
         // Menampilkan jumlah total data user
@@ -90,12 +88,6 @@ class dashboardowner : AppCompatActivity(), BottomNavigationView.OnNavigationIte
             R.id.itemtransaksi-> {
                 ft = supportFragmentManager.beginTransaction()
                 ft.replace(R.id.fragmentLayout, fragtransaksi).commit()
-                binding.fragmentLayout.setBackgroundColor(Color.argb(255,255,255,255))
-                binding.fragmentLayout.visibility = View.VISIBLE
-            }
-            R.id.itemAbout-> {
-                ft = supportFragmentManager.beginTransaction()
-                ft.replace(R.id.fragmentLayout, fragaboutowner).commit()
                 binding.fragmentLayout.setBackgroundColor(Color.argb(255,255,255,255))
                 binding.fragmentLayout.visibility = View.VISIBLE
             }
