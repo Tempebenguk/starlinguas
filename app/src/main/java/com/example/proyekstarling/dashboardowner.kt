@@ -32,6 +32,7 @@ class dashboardowner : AppCompatActivity(), BottomNavigationView.OnNavigationIte
         fragmenu = fragmenuowner()
         fragtransaksi = fragtransaksiowner()
         fraglayanan = fraglayananowner()
+        fragkategori = fragkategoriowner()
         database = FirebaseDatabase.getInstance().reference
 
         // Menampilkan jumlah total data user
