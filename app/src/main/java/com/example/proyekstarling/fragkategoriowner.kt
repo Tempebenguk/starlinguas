@@ -25,7 +25,7 @@ class fragkategoriowner : Fragment() {
 
         binding.btnTambahKtg.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, fragtambahuserowner())
+                .replace(R.id.fragment_container, fragtambahkategoriowner())
                 .addToBackStack(null)
                 .commit()
         }
